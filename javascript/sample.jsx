@@ -2,8 +2,42 @@ var Character = React.createClass({
   getInitialState: function(){
     return {
       classes: {},
-      selectedClass: {},
-      status: null
+      selectedClassValue: {
+        "level": 0,
+        "vigor": 0,
+        "attunement": 0,
+        "endurance": 0,
+        "vitality": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "intelligence": 0,
+        "faith": 0,
+        "luck": 0
+      },
+      allocationValue: {
+        "level": 0,
+        "vigor": 0,
+        "attunement": 0,
+        "endurance": 0,
+        "vitality": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "intelligence": 0,
+        "faith": 0,
+        "luck": 0
+      },
+      status: {
+        "level": 0,
+        "vigor": 0,
+        "attunement": 0,
+        "endurance": 0,
+        "vitality": 0,
+        "strength": 0,
+        "dexterity": 0,
+        "intelligence": 0,
+        "faith": 0,
+        "luck": 0
+      }
     };
   },
 
@@ -20,14 +54,15 @@ var Character = React.createClass({
 			}.bind(this)
 		});
 	},
+
   componentDidMount: function(){
     this.loadCommentsFromServer();
   },
 
   setStateSelectedClass: function(value){
     var selClass = this.state.classes[value];
-    this.setState({ selectedClass:
-      {
+    this.setState({
+      selectedClassValue: {
         "level": selClass.level,
         "vigor": selClass.vigor,
         "attunement": selClass.attunement,
@@ -38,6 +73,18 @@ var Character = React.createClass({
         "intelligence": selClass.intelligence,
         "faith": selClass.faith,
         "luck": selClass.luck
+      },
+      status: {
+        "level": this.state.selectedClassValue.level,
+        "vigor": this.state.selectedClassValue.vigor,
+        "attunement": this.state.selectedClassValue.attunement,
+        "endurance": this.state.selectedClassValue.endurance,
+        "vitality": this.state.selectedClassValue.vitality,
+        "strength": this.state.selectedClassValue.strength,
+        "dexterity": this.state.selectedClassValue.dexterity,
+        "intelligence": this.state.selectedClassValue.intelligence,
+        "faith": this.state.selectedClassValue.faith,
+        "luck": this.state.selectedClassValue.luck
       }
     });
   },
@@ -47,7 +94,7 @@ var Character = React.createClass({
     return (
       <div>
         <ClassesSelect classes={this.state.classes} onChange={this.setStateSelectedClass} />
-        <StatusViewer selectedClass={this.state.selectedClass} />
+        <StatusViewer selectedClassValue={this.state.selectedClassValue} status={this.state.status} />
       </div>
     );
   }
@@ -83,43 +130,43 @@ var StatusViewer = React.createClass({
         <tbody>
           <tr>
             <td>レベル</td>
-            <td>{this.props.selectedClass.level}</td>
+            <td>{this.props.status.level}</td>
           </tr>
           <tr>
             <td>生命力</td>
-            <td>{this.props.selectedClass.vigor}</td>
+            <td>{this.props.status.vigor}</td>
           </tr>
           <tr>
             <td>集中力</td>
-            <td>{this.props.selectedClass.attunement}</td>
+            <td>{this.props.status.attunement}</td>
           </tr>
           <tr>
             <td>持久力</td>
-            <td>{this.props.selectedClass.endurance}</td>
+            <td>{this.props.status.endurance}</td>
           </tr>
           <tr>
             <td>体力</td>
-            <td>{this.props.selectedClass.vitality}</td>
+            <td>{this.props.status.vitality}</td>
           </tr>
           <tr>
             <td>筋力</td>
-            <td>{this.props.selectedClass.strength}</td>
+            <td>{this.props.status.strength}</td>
           </tr>
           <tr>
             <td>技量</td>
-            <td>{this.props.selectedClass.dexterity}</td>
+            <td>{this.props.status.dexterity}</td>
           </tr>
           <tr>
             <td>理力</td>
-            <td>{this.props.selectedClass.intelligence}</td>
+            <td>{this.props.status.intelligence}</td>
           </tr>
           <tr>
             <td>信仰</td>
-            <td>{this.props.selectedClass.faith}</td>
+            <td>{this.props.status.faith}</td>
           </tr>
           <tr>
             <td>運</td>
-            <td>{this.props.selectedClass.luck}</td>
+            <td>{this.props.status.luck}</td>
           </tr>
         </tbody>
       </table>
