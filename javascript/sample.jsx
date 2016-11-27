@@ -3,16 +3,16 @@ var Character = React.createClass({
     return {
       classes: {},
       selectedClassValue: {
-        "level": 0,
-        "vigor": 0,
-        "attunement": 0,
-        "endurance": 0,
-        "vitality": 0,
-        "strength": 0,
-        "dexterity": 0,
-        "intelligence": 0,
-        "faith": 0,
-        "luck": 0
+        "level":9,
+        "vigor":12,
+        "attunement":10,
+        "endurance":11,
+        "vitality":15,
+        "strength":13,
+        "dexterity":12,
+        "intelligence":9,
+        "faith":9,
+        "luck":7
       },
       allocationValue: {
         "level": 0,
@@ -27,16 +27,16 @@ var Character = React.createClass({
         "luck": 0
       },
       status: {
-        "level": 0,
-        "vigor": 0,
-        "attunement": 0,
-        "endurance": 0,
-        "vitality": 0,
-        "strength": 0,
-        "dexterity": 0,
-        "intelligence": 0,
-        "faith": 0,
-        "luck": 0
+        "level":9,
+        "vigor":12,
+        "attunement":10,
+        "endurance":11,
+        "vitality":15,
+        "strength":13,
+        "dexterity":12,
+        "intelligence":9,
+        "faith":9,
+        "luck":7
       }
     };
   },
@@ -75,16 +75,16 @@ var Character = React.createClass({
         "luck": selClass.luck
       },
       status: {
-        "level": this.state.selectedClassValue.level,
-        "vigor": this.state.selectedClassValue.vigor,
-        "attunement": this.state.selectedClassValue.attunement,
-        "endurance": this.state.selectedClassValue.endurance,
-        "vitality": this.state.selectedClassValue.vitality,
-        "strength": this.state.selectedClassValue.strength,
-        "dexterity": this.state.selectedClassValue.dexterity,
-        "intelligence": this.state.selectedClassValue.intelligence,
-        "faith": this.state.selectedClassValue.faith,
-        "luck": this.state.selectedClassValue.luck
+        "level": selClass.level + this.state.allocationValue.level,
+        "vigor": selClass.vigor + this.state.allocationValue.vigor,
+        "attunement": selClass.attunement + this.state.allocationValue.attunement,
+        "endurance": selClass.endurance + this.state.allocationValue.endurance,
+        "vitality": selClass.vitality + this.state.allocationValue.vitality,
+        "strength": selClass.strength + this.state.allocationValue.strength,
+        "dexterity": selClass.dexterity + this.state.allocationValue.dexterity,
+        "intelligence": selClass.intelligence + this.state.allocationValue.intelligence,
+        "faith": selClass.faith + this.state.allocationValue.faith,
+        "luck": selClass.luck + this.state.allocationValue.luck
       }
     });
   },
