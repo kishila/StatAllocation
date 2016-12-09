@@ -4,6 +4,7 @@ require './define.rb'
 
 EQUIPMENT.each_pair do |category, weapons|
   weapons.each_pair do |name_en, name_ja|
+    sleep 0.5 # ディレイ
     url = URI.escape(URL + name_ja)
     puts name_ja
     open(url) do |f|
