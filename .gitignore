@@ -1,2 +1,5 @@
 .bundle
 
+scraping/html/*
+!.gitkeep
+
