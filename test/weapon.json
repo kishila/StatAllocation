@@ -1,54 +1,54 @@
 {
     "weapons" : {
-        "tanken": 
+        "daggers": 
         [ 
             {
                 "name":"ダガー",
-                "power": [
+                "damage": [
                     "58",
                     "0",
                     "0",
                     "0",
                     "0"
                 ],
-                "cut":[
+                "damage_reduction":[
                     "35.0",
                     "20.0",
                     "15.0",
                     "15.0",
                     "20.0",
                 ],
-                "timei":"140",
-                "uketi":"15",
-                "mai":"-",
-                "effect": [
+                "critical_damage":"140",
+                "stability":"15",
+                "spell_buff":"-",
+                "aux_effects": [
                     "0",
                     "0",
                     "0",
                 ],
-                "hosei": [
+                "bonuses": [
                     "E",
                     "C",
                     "-",
                     "-"
                 ],
-                "need": [
+                "requirements": [
                     "5",
                     "9",
                     "0",
                     "0"
                 ],
-                "sengi":"クイックステップ",
-                "fp":"5(-/-)",
+                "skill":"クイックステップ",
+                "skill_fp_cost":"5(-/-)",
                 "weight":"1.5",
-                "taikyuu":"50",
-                "kyouka":"通常"
+                "durability":"50",
+                "strengthening":"通常"
             },
             {
                 "name":"パリングダガー"
             }
         ],
-        "tyokken":
+        "straight_swords":
         [
             {
                 "name":"ショートソード"
