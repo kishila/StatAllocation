@@ -1,9 +1,8 @@
 require 'nokogiri'
+require 'json'
 require './define.rb'
 
-require 'pry'
-
-def convert_weapon(path)
+def convert_equipments(path)
   html = File.read(path)
   doc = Nokogiri::HTML.parse(html, nil, 'utf-8')
   weapons = []
@@ -45,16 +44,15 @@ def convert_weapon(path)
   weapons
 end
 
-# p convert_weapon("./html/bows.html")
-# exit
-
 equipments = {}
 
 EQUIPMENT.each_pair do |category, weapons|
+  next if category == :armor # 防具は現在未対応
   equipments[category] = weapons.map do |name_en, name_ja|
     puts name_ja
-    convert_weapon("./html/#{name_en}.html")
+    convert_equipments("./html/#{name_en}.html")
   end
-  p equipments[category]
 end
+
+File.write('../json/equipments.json', equipments.to_json)
 

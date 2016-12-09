@@ -27,11 +27,24 @@ EQUIPMENT = {
     greatbows: '大弓',
     crossbows: 'クロスボウ'
   },
+  spell_tools: {
+    staves: '杖',
+    flames: '呪術の火',
+    talismans: 'タリスマン',
+    chimes: '聖鈴'
+  },
   shields: {
     torches: '松明',
     small_shields: '小盾',
     normal_shields: '中盾',
     greatshields: '大盾'
+  },
+  armor: {
+    head: '兜',
+    chest: '鎧',
+    hands: '手甲',
+    legs: '足甲',
+    rings: '指輪'
   }
 }
 
