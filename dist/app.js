@@ -73,46 +73,232 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Counter = function Counter(_ref) {
-	  var value1 = _ref.value1,
-	      value2 = _ref.value2,
-	      onIncrement1 = _ref.onIncrement1,
-	      onDecrement1 = _ref.onDecrement1,
-	      onIncrement2 = _ref.onIncrement2,
-	      onDecrement2 = _ref.onDecrement2;
+	var Character = function Character() {
 	  return _react2.default.createElement(
 	    'div',
 	    null,
+	    _react2.default.createElement(ClassesSelect, {
+	      selectedClass: store.getState().selectedClass,
+	      onChangeClass: function onChangeClass(e) {
+	        var action = "SELECT_" + e.target.value.toUpperCase() + "_CLASS";
+	        store.dispatch({
+	          type: action
+	        });
+	      }
+	    }),
+	    _react2.default.createElement(StatusViewer, {
+	      status: store.getState().status
+	    })
+	  );
+	};
+
+	var ClassesSelect = function ClassesSelect(_ref) {
+	  var selectedClass = _ref.selectedClass,
+	      onChangeClass = _ref.onChangeClass;
+	  return _react2.default.createElement(
+	    'select',
+	    { onChange: onChangeClass },
 	    _react2.default.createElement(
-	      'h1',
+	      'option',
+	      { value: 'knight' },
+	      '\u9A0E\u58EB'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'mercenary' },
+	      '\u50AD\u5175'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'warrior' },
+	      '\u6226\u58EB'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'herald' },
+	      '\u4F1D\u4EE4'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'thief' },
+	      '\u76D7\u4EBA'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'assassin' },
+	      '\u523A\u5BA2'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'sorcerer' },
+	      '\u9B54\u8853\u5E2B'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'pyromancer' },
+	      '\u546A\u8853\u5E2B'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'cleric' },
+	      '\u8056\u8077\u8005'
+	    ),
+	    _react2.default.createElement(
+	      'option',
+	      { value: 'deprived' },
+	      '\u6301\u305F\u3056\u308B\u8005'
+	    )
+	  );
+	};
+
+	var StatusViewer = function StatusViewer(_ref2) {
+	  var status = _ref2.status;
+	  return _react2.default.createElement(
+	    'table',
+	    null,
+	    _react2.default.createElement(
+	      'tbody',
 	      null,
-	      value1
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: onIncrement1 },
-	      '+'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: onDecrement1 },
-	      '-'
-	    ),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(
-	      'h1',
-	      null,
-	      value2
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: onIncrement2 },
-	      '+'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: onDecrement2 },
-	      '-'
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u30EC\u30D9\u30EB'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.level
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u751F\u547D\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.vigor
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u96C6\u4E2D\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.attunement
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u6301\u4E45\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.endurance
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u4F53\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.vitality
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u7B4B\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.strength
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u6280\u91CF'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.dexterity
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u7406\u529B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.intelligence
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u4FE1\u4EF0'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.faith
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          '\u904B'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          status.luck
+	        )
+	      )
 	    )
 	  );
 	};
@@ -122,30 +308,7 @@
 
 	//画面更新用の関数を作成
 	var render = function render() {
-	  _reactDom2.default.render(_react2.default.createElement(Counter, {
-	    value1: store.getState().count1,
-	    value2: store.getState().count2,
-	    onIncrement1: function onIncrement1() {
-	      return store.dispatch({
-	        type: 'INCREMENT1'
-	      });
-	    },
-	    onDecrement1: function onDecrement1() {
-	      return store.dispatch({
-	        type: 'DECREMENT1'
-	      });
-	    },
-	    onIncrement2: function onIncrement2() {
-	      return store.dispatch({
-	        type: 'INCREMENT2'
-	      });
-	    },
-	    onDecrement2: function onDecrement2() {
-	      return store.dispatch({
-	        type: 'DECREMENT2'
-	      });
-	    }
-	  }), document.getElementById('root'));
+	  _reactDom2.default.render(_react2.default.createElement(Character, null), document.getElementById('root'));
 	};
 
 	//subscribe関数に、現在のstateの状況を画面に表示する関数をセット
@@ -26761,39 +26924,195 @@
 /* 231 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.default = reducer;
+	var jsonData;
+	$.ajaxSetup({ async: false });
+	$.getJSON('../json/classes.json', function (data) {
+	  jsonData = data;
+	});
+	$.ajaxSetup({ async: true }); // 非同期に戻す
+
 	var initialState = {
-	  count1: 0,
-	  count2: 0
+	  selectedClass: "knight",
+	  selectedClassValue: {
+	    "level": jsonData.knight.level,
+	    "vigor": jsonData.knight.vigor,
+	    "attunement": jsonData.knight.attunment,
+	    "endurance": jsonData.knight.endurance,
+	    "vitality": jsonData.knight.vitality,
+	    "strength": jsonData.knight.strength,
+	    "dexterity": jsonData.knight.dexterity,
+	    "intelligence": jsonData.knight.intelligence,
+	    "faith": jsonData.knight.faith,
+	    "luck": jsonData.knight.luck
+	  },
+	  status: {
+	    "level": jsonData.knight.level,
+	    "vigor": jsonData.knight.vigor,
+	    "attunement": jsonData.knight.attunment,
+	    "endurance": jsonData.knight.endurance,
+	    "vitality": jsonData.knight.vitality,
+	    "strength": jsonData.knight.strength,
+	    "dexterity": jsonData.knight.dexterity,
+	    "intelligence": jsonData.knight.intelligence,
+	    "faith": jsonData.knight.faith,
+	    "luck": jsonData.knight.luck
+	  }
 	};
 
 	function reducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 
+	  // 選択された素性のデータを取得
+	  var setSelectedClassValue = function setSelectedClassValue(selectedClass) {
+	    var selClassData = jsonData[selectedClass];
+	    return {
+	      "level": selClassData.level,
+	      "vigor": selClassData.vigor,
+	      "attunement": selClassData.attunment,
+	      "endurance": selClassData.endurance,
+	      "vitality": selClassData.vitality,
+	      "strength": selClassData.strength,
+	      "dexterity": selClassData.dexterity,
+	      "intelligence": selClassData.intelligence,
+	      "faith": selClassData.faith,
+	      "luck": selClassData.luck
+	    };
+	  };
+
+	  //  ステータスの更新
+	  var updateStatus = function updateStatus(tmpClassValue) {
+	    return {
+	      "level": tmpClassValue.level,
+	      "vigor": tmpClassValue.vigor,
+	      "attunement": tmpClassValue.attunment,
+	      "endurance": tmpClassValue.endurance,
+	      "vitality": tmpClassValue.vitality,
+	      "strength": tmpClassValue.strength,
+	      "dexterity": tmpClassValue.dexterity,
+	      "intelligence": tmpClassValue.intelligence,
+	      "faith": tmpClassValue.faith,
+	      "luck": tmpClassValue.luck
+	    };
+	  };
+
 	  switch (action.type) {
-	    case 'INCREMENT1':
+	    //- セレクターによる素性選択時のアクション
+	    case 'SELECT_KNIGHT_CLASS':
 	      {
-	        state.count1 += 1;
-	        return state;
+	        var selectedClass = "knight";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
 	      }
-	    case 'DECREMENT1':
-	      state.count1 -= 1;
-	      return state;
-	    case 'INCREMENT2':
+	    case 'SELECT_MERCENARY_CLASS':
 	      {
-	        state.count2 += 1;
-	        return state;
+	        var selectedClass = "mercenary";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
 	      }
-	    case 'DECREMENT2':
+	    case 'SELECT_WARRIOR_CLASS':
 	      {
-	        state.count2 -= 1;
-	        return state;
+	        var selectedClass = "warrior";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_HERALD_CLASS':
+	      {
+	        var selectedClass = "herald";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_THIEF_CLASS':
+	      {
+	        var selectedClass = "thief";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_ASSASSIN_CLASS':
+	      {
+	        var selectedClass = "assassin";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_SORCERER_CLASS':
+	      {
+	        var selectedClass = "sorcerer";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_PYROMANCER_CLASS':
+	      {
+	        var selectedClass = "pyromancer";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_CLERIC_CLASS':
+	      {
+	        var selectedClass = "cleric";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
+	      }
+	    case 'SELECT_DEPRIVED_CLASS':
+	      {
+	        var selectedClass = "deprived";
+	        var tmpClassValue = setSelectedClassValue(selectedClass);
+	        var tmpStatus = updateStatus(tmpClassValue);
+	        return Object.assign({}, state, {
+	          selectedClass: selectedClass,
+	          selectedClassValue: tmpClassValue,
+	          status: tmpStatus
+	        });
 	      }
 	    default:
 	      return state;
