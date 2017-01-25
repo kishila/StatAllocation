@@ -105,4 +105,4 @@ const render = () => {
 store.subscribe(render)
 
 //最初に画面を表示（1が表示される)
-render()
+window.onload = render;

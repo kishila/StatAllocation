@@ -1,11 +1,4 @@
-var jsonData;
-$.ajaxSetup({ async: false });
-$.getJSON('../json/classes.json',
-  function(data) {
-    jsonData = data;
-  }
-);
-$.ajaxSetup({ async: true }); // 非同期に戻す
+const jsonData = require('../json/classes.json');
 
 const initialState = {
   selectedClass: "knight",
@@ -34,7 +27,6 @@ const initialState = {
     "luck":jsonData.knight.luck
   }
 }
-
 
 export default function reducer(state = initialState, action) {
   // 選択された素性のデータを取得

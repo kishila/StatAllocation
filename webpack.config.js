@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
   entry: ["./src/app.js"],
   output: {
     path: __dirname+"/dist",
@@ -10,7 +10,12 @@ module.exports={
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json',
       }
     ]
-  }
-}
+  },
+  devtool: 'cheap-module-eval-source-map',
+};
