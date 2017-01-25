@@ -1,11 +1,4 @@
-var jsonData;
-$.ajaxSetup({ async: false });
-$.getJSON('../json/classes.json',
-  function(data) {
-    jsonData = data;
-  }
-);
-$.ajaxSetup({ async: true }); // 非同期に戻す
+const jsonData = require('../json/classes.json');
 
 const initialState = {
   selectedClass: "knight",
@@ -35,52 +28,55 @@ const initialState = {
   }
 }
 
-
 export default function reducer(state = initialState, action) {
   // 選択された素性のデータを取得
-   var setSelectedClassValue = function(selectedClass){
-     var selClassData = jsonData[selectedClass];
-     return {
-       "level":selClassData.level,
-       "vigor":selClassData.vigor,
-       "attunement":selClassData.attunment,
-       "endurance":selClassData.endurance,
-       "vitality":selClassData.vitality,
-       "strength":selClassData.strength,
-       "dexterity":selClassData.dexterity,
-       "intelligence":selClassData.intelligence,
-       "faith":selClassData.faith,
-       "luck":selClassData.luck
-     };
-   }
+  var setSelectedClassValue = function(selectedClass){
+    var selClassData = jsonData[selectedClass];
+    return {
+      "level":selClassData.level,
+      "vigor":selClassData.vigor,
+      "attunement":selClassData.attunment,
+      "endurance":selClassData.endurance,
+      "vitality":selClassData.vitality,
+      "strength":selClassData.strength,
+      "dexterity":selClassData.dexterity,
+      "intelligence":selClassData.intelligence,
+      "faith":selClassData.faith,
+      "luck":selClassData.luck
+    };
+  }
 
-   //  ステータスの更新
-   var updateStatus = function(tmpClassValue){
-     return {
-       "level":tmpClassValue.level,
-       "vigor":tmpClassValue.vigor,
-       "attunement":tmpClassValue.attunment,
-       "endurance":tmpClassValue.endurance,
-       "vitality":tmpClassValue.vitality,
-       "strength":tmpClassValue.strength,
-       "dexterity":tmpClassValue.dexterity,
-       "intelligence":tmpClassValue.intelligence,
-       "faith":tmpClassValue.faith,
-       "luck":tmpClassValue.luck
-     }
-   }
+  //  ステータスの更新
+  var updateStatus = function(tmpClassValue){
+    return {
+      "level":tmpClassValue.level,
+      "vigor":tmpClassValue.vigor,
+      "attunement":tmpClassValue.attunment,
+      "endurance":tmpClassValue.endurance,
+      "vitality":tmpClassValue.vitality,
+      "strength":tmpClassValue.strength,
+      "dexterity":tmpClassValue.dexterity,
+      "intelligence":tmpClassValue.intelligence,
+      "faith":tmpClassValue.faith,
+      "luck":tmpClassValue.luck
+    }
+  }
+
+  const updateReducer = (selectedClass, nextClass, nextStatus) => {
+    return Object.assign({}, state, {
+      selectedClass: selectedClass,
+      selectedClassValue: tmpClassValue,
+      status: tmpStatus
+    }) 
+  }
 
   switch(action.type) {
-    //- セレクターによる素性選択時のアクション
+      //- セレクターによる素性選択時のアクション
     case 'SELECT_KNIGHT_CLASS': {
       var selectedClass = "knight"
       var tmpClassValue = setSelectedClassValue(selectedClass);
       var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateReducer(selectedClass, tmpClassValue, tmpStatus);
     }
     case 'SELECT_MERCENARY_CLASS': {
       var selectedClass = "mercenary"
