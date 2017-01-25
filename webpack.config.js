@@ -1,3 +1,5 @@
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+
 module.exports = {
   entry: ["./src/app.js"],
   output: {
@@ -18,4 +20,10 @@ module.exports = {
     ]
   },
   devtool: 'cheap-module-eval-source-map',
+  plugins: [
+    new LiveReloadPlugin({
+      appendScriptTag: true,
+      ignore: null,
+    })
+  ]
 };
