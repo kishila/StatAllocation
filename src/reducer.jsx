@@ -2,10 +2,10 @@ const jsonData = require('../json/classes.json');
 
 const initialState = {
   selectedClass: "knight",
-  selectedClassValue: {
+  selectedClassValues: {
     "level":jsonData.knight.level,
     "vigor":jsonData.knight.vigor,
-    "attunement":jsonData.knight.attunment,
+    "attunement":jsonData.knight.attunement,
     "endurance":jsonData.knight.endurance,
     "vitality":jsonData.knight.vitality,
     "strength":jsonData.knight.strength,
@@ -14,10 +14,22 @@ const initialState = {
     "faith":jsonData.knight.faith,
     "luck":jsonData.knight.luck
   },
+  allocationValue: {
+    "level": 0,
+    "vigor": 0,
+    "attunement": 0,
+    "endurance": 0,
+    "vitality": 0,
+    "strength": 0,
+    "dexterity": 0,
+    "intelligence": 0,
+    "faith": 0,
+    "luck": 0
+  },
   status: {
     "level":jsonData.knight.level,
     "vigor":jsonData.knight.vigor,
-    "attunement":jsonData.knight.attunment,
+    "attunement":jsonData.knight.attunement,
     "endurance":jsonData.knight.endurance,
     "vitality":jsonData.knight.vitality,
     "strength":jsonData.knight.strength,
@@ -29,13 +41,13 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-  // 選択された素性のデータを取得
-  var setSelectedClassValue = function(selectedClass){
+  // 選択された素性のオブジェクトデータを取得
+  const getSelectedClassObjectData = (selectedClass) => {
     var selClassData = jsonData[selectedClass];
     return {
       "level":selClassData.level,
       "vigor":selClassData.vigor,
-      "attunement":selClassData.attunment,
+      "attunement":selClassData.attunement,
       "endurance":selClassData.endurance,
       "vitality":selClassData.vitality,
       "strength":selClassData.strength,
@@ -47,127 +59,100 @@ export default function reducer(state = initialState, action) {
   }
 
   //  ステータスの更新
-  var updateStatus = function(tmpClassValue){
+  const updateStatus = (nextSelectedClassObject, nextAllocationObject) => {
     return {
-      "level":tmpClassValue.level,
-      "vigor":tmpClassValue.vigor,
-      "attunement":tmpClassValue.attunment,
-      "endurance":tmpClassValue.endurance,
-      "vitality":tmpClassValue.vitality,
-      "strength":tmpClassValue.strength,
-      "dexterity":tmpClassValue.dexterity,
-      "intelligence":tmpClassValue.intelligence,
-      "faith":tmpClassValue.faith,
-      "luck":tmpClassValue.luck
+      "level":nextSelectedClassObject.level,
+      "vigor":nextSelectedClassObject.vigor + nextAllocationObject.vigor,
+      "attunement":nextSelectedClassObject.attunement,
+      "endurance":nextSelectedClassObject.endurance,
+      "vitality":nextSelectedClassObject.vitality,
+      "strength":nextSelectedClassObject.strength,
+      "dexterity":nextSelectedClassObject.dexterity,
+      "intelligence":nextSelectedClassObject.intelligence,
+      "faith":nextSelectedClassObject.faith,
+      "luck":nextSelectedClassObject.luck
     }
   }
 
-  const updateReducer = (selectedClass, nextClass, nextStatus) => {
+  // 素性の変更
+  const updateClass = (selectedClassName) => {
+    var nextSelectedClassObject = getSelectedClassObjectData(selectedClassName);
+    var nextStatus = updateStatus(nextSelectedClassObject, state.allocationValue);
     return Object.assign({}, state, {
       selectedClass: selectedClass,
-      selectedClassValue: tmpClassValue,
-      status: tmpStatus
-    }) 
+      selectedClassValues: nextSelectedClassObject,
+      status: nextStatus
+    })
   }
 
   switch(action.type) {
-      //- セレクターによる素性選択時のアクション
+    //- セレクターによる素性選択時のアクション
     case 'SELECT_KNIGHT_CLASS': {
-      var selectedClass = "knight"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return updateReducer(selectedClass, tmpClassValue, tmpStatus);
+      const selectedClass = "knight"
+      return updateClass(selectedClass);
     }
     case 'SELECT_MERCENARY_CLASS': {
       var selectedClass = "mercenary"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_WARRIOR_CLASS': {
       var selectedClass = "warrior"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_HERALD_CLASS': {
       var selectedClass = "herald"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_THIEF_CLASS': {
       var selectedClass = "thief"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_ASSASSIN_CLASS': {
       var selectedClass = "assassin"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_SORCERER_CLASS': {
       var selectedClass = "sorcerer"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_PYROMANCER_CLASS': {
       var selectedClass = "pyromancer"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_CLERIC_CLASS': {
       var selectedClass = "cleric"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
-      return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
-      });
+      return updateClass(selectedClass);
     }
     case 'SELECT_DEPRIVED_CLASS': {
       var selectedClass = "deprived"
-      var tmpClassValue = setSelectedClassValue(selectedClass);
-      var tmpStatus = updateStatus(tmpClassValue);
+      return updateClass(selectedClass);
+    }
+
+    //- ステ振り時のアクション
+    case 'ALLOCATION_VIGOR_UP': {
+      var selectedClassParam = state.selectedClassValues.vigor;
+      var nextParam = state.allocationValue.vigor + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"vigor": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
       return Object.assign({}, state, {
-        selectedClass: selectedClass,
-        selectedClassValue: tmpClassValue,
-        status: tmpStatus
+        allocationValue: nextAllocationObject,
+        status: nextStatus
       });
     }
+    case 'ALLOCATION_VIGOR_DOWN': {
+      var selectedClassParam = state.selectedClassValues.vigor;
+      var nextParam = state.allocationValue.vigor - 1;
+      console.log(nextParam);
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"vigor": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+
     default:
       return state
   }

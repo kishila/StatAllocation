@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StatusViewer({ status, }) {
+export default function StatusViewer({ status, onClickVigorDown, onClickVigorUp}) {
   return (
     <table>
       <tbody>
@@ -10,7 +10,11 @@ export default function StatusViewer({ status, }) {
         </tr>
         <tr>
           <td>生命力</td>
-          <td>{status.vigor}</td>
+          <td>
+            <span onClick={onClickVigorDown}>&lt;</span>
+            <span>{status.vigor}</span>
+            <span onClick={onClickVigorUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>集中力</td>
@@ -48,4 +52,3 @@ export default function StatusViewer({ status, }) {
     </table>
   );
 }
-
