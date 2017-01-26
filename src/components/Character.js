@@ -19,6 +19,20 @@ export default function Character() {
       />
       <StatusViewer
         status={store.getState().status}
+        onClickVigorDown={(e) =>
+          {
+            store.dispatch({
+              type: "ALLOCATION_VIGOR_DOWN"
+            })
+          }
+        }
+        onClickVigorUp={(e) =>
+          {
+            store.dispatch({
+              type: "ALLOCATION_VIGOR_UP"
+            })
+          }
+        }
       />
     </div>
   );
