@@ -19,21 +19,10 @@ export default function Character() {
       />
       <StatusViewer
         status={store.getState().status}
-        onClickVigorDown={(e) =>
-          {
-            store.dispatch({
-              type: "ALLOCATION_VIGOR_DOWN"
-            })
-          }
-        }
-        onClickVigorUp={(e) =>
-          {
-            store.dispatch({
-              type: "ALLOCATION_VIGOR_UP"
-            })
-          }
-        }
-
+        selectedClassValue={store.getState().selectedClassValue}
+        allocationValue={store.getState().allocationValue}
+        onClickVigorDown={(e) => {store.dispatch({type: "ALLOCATION_VIGOR_DOWN"})}}
+        onClickVigorUp={(e) => {store.dispatch({type: "ALLOCATION_VIGOR_UP"})}}
         onClickAttunementDown={(e) => {store.dispatch({type: "ALLOCATION_ATTUNEMENT_DOWN"})}}
         onClickAttunementUp={(e) => {store.dispatch({type: "ALLOCATION_ATTUNEMENT_UP"})}}
         onClickEnduranceDown={(e) => {store.dispatch({type: "ALLOCATION_ENDURANCE_DOWN"})}}
@@ -50,6 +39,7 @@ export default function Character() {
         onClickFaithUp={(e) => {store.dispatch({type: "ALLOCATION_FAITH_UP"})}}
         onClickLuckDown={(e) => {store.dispatch({type: "ALLOCATION_LUCK_DOWN"})}}
         onClickLuckUp={(e) => {store.dispatch({type: "ALLOCATION_LUCK_UP"})}}
+        onClickReset={(e) => {store.dispatch({type: "RESET_ALLOCATION"})}}
       />
     </div>
   );
