@@ -60,17 +60,19 @@ export default function reducer(state = initialState, action) {
 
   //  ステータスの更新
   const updateStatus = (nextSelectedClassObject, nextAllocationObject) => {
+    var sum = nextAllocationObject.vigor + nextAllocationObject.attunement + nextAllocationObject.endurance + nextAllocationObject.vitality
+     + nextAllocationObject.strength + nextAllocationObject.dexterity + nextAllocationObject.intelligence + nextAllocationObject.faith + nextAllocationObject.luck;
     return {
-      "level":nextSelectedClassObject.level,
+      "level":nextSelectedClassObject.level + sum,
       "vigor":nextSelectedClassObject.vigor + nextAllocationObject.vigor,
-      "attunement":nextSelectedClassObject.attunement,
-      "endurance":nextSelectedClassObject.endurance,
-      "vitality":nextSelectedClassObject.vitality,
-      "strength":nextSelectedClassObject.strength,
-      "dexterity":nextSelectedClassObject.dexterity,
-      "intelligence":nextSelectedClassObject.intelligence,
-      "faith":nextSelectedClassObject.faith,
-      "luck":nextSelectedClassObject.luck
+      "attunement":nextSelectedClassObject.attunement + nextAllocationObject.attunement,
+      "endurance":nextSelectedClassObject.endurance + nextAllocationObject.endurance,
+      "vitality":nextSelectedClassObject.vitality + nextAllocationObject.vitality,
+      "strength":nextSelectedClassObject.strength + nextAllocationObject.strength,
+      "dexterity":nextSelectedClassObject.dexterity + nextAllocationObject.dexterity,
+      "intelligence":nextSelectedClassObject.intelligence + nextAllocationObject.intelligence,
+      "faith":nextSelectedClassObject.faith + nextAllocationObject.faith,
+      "luck":nextSelectedClassObject.luck + nextAllocationObject.luck
     }
   }
 
@@ -145,6 +147,182 @@ export default function reducer(state = initialState, action) {
       var nextParam = state.allocationValue.vigor - 1;
       if(nextParam  < 0) return state;
       var nextAllocationObject = Object.assign({}, state.allocationValue, {"vigor": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_ATTUNEMENT_UP': {
+      var selectedClassParam = state.selectedClassValues.attunement;
+      var nextParam = state.allocationValue.attunement + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"attunement": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_ATTUNEMENT_DOWN': {
+      var selectedClassParam = state.selectedClassValues.attunement;
+      var nextParam = state.allocationValue.attunement - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"attunement": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_ENDURANCE_UP': {
+      var selectedClassParam = state.selectedClassValues.endurance;
+      var nextParam = state.allocationValue.endurance + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"endurance": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_ENDURANCE_DOWN': {
+      var selectedClassParam = state.selectedClassValues.endurance;
+      var nextParam = state.allocationValue.endurance - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"endurance": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_VITALITY_UP': {
+      var selectedClassParam = state.selectedClassValues.vitality;
+      var nextParam = state.allocationValue.vitality + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"vitality": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_VITALITY_DOWN': {
+      var selectedClassParam = state.selectedClassValues.vitality;
+      var nextParam = state.allocationValue.vitality - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"vitality": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_STRENGTH_UP': {
+      var selectedClassParam = state.selectedClassValues.strength;
+      var nextParam = state.allocationValue.strength + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"strength": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_STRENGTH_DOWN': {
+      var selectedClassParam = state.selectedClassValues.strength;
+      var nextParam = state.allocationValue.strength - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"strength": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_DEXTERITY_UP': {
+      var selectedClassParam = state.selectedClassValues.dexterity;
+      var nextParam = state.allocationValue.dexterity + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"dexterity": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_DEXTERITY_DOWN': {
+      var selectedClassParam = state.selectedClassValues.dexterity;
+      var nextParam = state.allocationValue.dexterity - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"dexterity": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_INTELLIGENCE_UP': {
+      var selectedClassParam = state.selectedClassValues.intelligence;
+      var nextParam = state.allocationValue.intelligence + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"intelligence": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_INTELLIGENCE_DOWN': {
+      var selectedClassParam = state.selectedClassValues.intelligence;
+      var nextParam = state.allocationValue.intelligence - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"intelligence": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_FAITH_UP': {
+      var selectedClassParam = state.selectedClassValues.faith;
+      var nextParam = state.allocationValue.faith + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"faith": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_FAITH_DOWN': {
+      var selectedClassParam = state.selectedClassValues.faith;
+      var nextParam = state.allocationValue.faith - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"faith": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_LUCK_UP': {
+      var selectedClassParam = state.selectedClassValues.luck;
+      var nextParam = state.allocationValue.luck + 1;
+      if((selectedClassParam + nextParam)  > 99) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"luck": nextParam});
+      var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
+      return Object.assign({}, state, {
+        allocationValue: nextAllocationObject,
+        status: nextStatus
+      });
+    }
+    case 'ALLOCATION_LUCK_DOWN': {
+      var selectedClassParam = state.selectedClassValues.luck;
+      var nextParam = state.allocationValue.luck - 1;
+      if(nextParam  < 0) return state;
+      var nextAllocationObject = Object.assign({}, state.allocationValue, {"luck": nextParam});
       var nextStatus = updateStatus(state.selectedClassValues, nextAllocationObject);
       return Object.assign({}, state, {
         allocationValue: nextAllocationObject,

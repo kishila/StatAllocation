@@ -1,6 +1,17 @@
 import React from 'react';
 
-export default function StatusViewer({ status, onClickVigorDown, onClickVigorUp}) {
+export default function StatusViewer({ status,
+  onClickVigorDown, onClickVigorUp,
+  onClickAttunementDown, onClickAttunementUp,
+  onClickEnduranceDown, onClickEnduranceUp,
+  onClickVitalityDown, onClickVitalityUp,
+  onClickStrengthDown, onClickStrengthUp,
+  onClickDexterityDown, onClickDexterityUp,
+  onClickIntelligenceDown, onClickIntelligenceUp,
+  onClickFaithDown, onClickFaithUp,
+  onClickLuckDown, onClickLuckUp
+
+}) {
   return (
     <table>
       <tbody>
@@ -18,35 +29,67 @@ export default function StatusViewer({ status, onClickVigorDown, onClickVigorUp}
         </tr>
         <tr>
           <td>集中力</td>
-          <td>{status.attunement}</td>
+          <td>
+            <span onClick={onClickAttunementDown}>&lt;</span>
+            <span>{status.attunement}</span>
+            <span onClick={onClickAttunementUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>持久力</td>
-          <td>{status.endurance}</td>
+          <td>
+            <span onClick={onClickEnduranceDown}>&lt;</span>
+            <span>{status.endurance}</span>
+            <span onClick={onClickEnduranceUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>体力</td>
-          <td>{status.vitality}</td>
+          <td>
+            <span onClick={onClickVitalityDown}>&lt;</span>
+            <span>{status.vitality}</span>
+            <span onClick={onClickVitalityUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>筋力</td>
-          <td>{status.strength}</td>
+          <td>
+            <span onClick={onClickStrengthDown}>&lt;</span>
+            <span>{status.strength}</span>
+            <span onClick={onClickStrengthUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>技量</td>
-          <td>{status.dexterity}</td>
+          <td>
+            <span onClick={onClickDexterityDown}>&lt;</span>
+            <span>{status.dexterity}</span>
+            <span onClick={onClickDexterityUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>理力</td>
-          <td>{status.intelligence}</td>
+          <td>
+            <span onClick={onClickIntelligenceDown}>&lt;</span>
+            <span>{status.intelligence}</span>
+            <span onClick={onClickIntelligenceUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>信仰</td>
-          <td>{status.faith}</td>
+          <td>
+            <span onClick={onClickFaithDown}>&lt;</span>
+            <span>{status.faith}</span>
+            <span onClick={onClickFaithUp}>&gt;</span>
+          </td>
         </tr>
         <tr>
           <td>運</td>
-          <td>{status.luck}</td>
+          <td>
+            <span onClick={onClickLuckDown}>&lt;</span>
+            <span>{status.luck}</span>
+            <span onClick={onClickLuckUp}>&gt;</span>
+          </td>
         </tr>
       </tbody>
     </table>
