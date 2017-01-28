@@ -81,7 +81,7 @@ export default function reducer(state = initialState, action) {
     const nextSelectedClassObject = getSelectedClassObjectData(selectedClassName);
     const nextStatus = updateStatus(nextSelectedClassObject, state.allocationValue);
     return Object.assign({}, state, {
-      selectedClass: selectedClass,
+      selectedClass: nextSelectedClassObject,
       selectedClassValue: nextSelectedClassObject,
       status: nextStatus
     })
