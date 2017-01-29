@@ -10,9 +10,9 @@ export default function Character() {
         selectedClass={store.getState().selectedClass}
         onChangeClass={(e) =>
           {
-            const action = "SELECT_" + e.target.value.toUpperCase() + "_CLASS";
             store.dispatch({
-              type: action
+              type: "SELECT_CLASS",
+              class: e.target.value
             })
           }
         }

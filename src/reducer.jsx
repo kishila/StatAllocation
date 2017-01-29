@@ -89,47 +89,11 @@ export default function reducer(state = initialState, action) {
 
   switch(action.type) {
     //- セレクターによる素性選択時のアクション
-    case 'SELECT_KNIGHT_CLASS': {
-      const selectedClass = "knight"
+    case 'SELECT_CLASS': {
+      const selectedClass = action.class
       return updateClass(selectedClass);
     }
-    case 'SELECT_MERCENARY_CLASS': {
-      const selectedClass = "mercenary"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_WARRIOR_CLASS': {
-      const selectedClass = "warrior"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_HERALD_CLASS': {
-      const selectedClass = "herald"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_THIEF_CLASS': {
-      const selectedClass = "thief"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_ASSASSIN_CLASS': {
-      const selectedClass = "assassin"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_SORCERER_CLASS': {
-      const selectedClass = "sorcerer"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_PYROMANCER_CLASS': {
-      const selectedClass = "pyromancer"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_CLERIC_CLASS': {
-      const selectedClass = "cleric"
-      return updateClass(selectedClass);
-    }
-    case 'SELECT_DEPRIVED_CLASS': {
-      const selectedClass = "deprived"
-      return updateClass(selectedClass);
-    }
-
+    
     //- ステ振り時のアクション
     case 'ALLOCATION_VIGOR_UP': {
       const selectedClassParam = state.selectedClassValue.vigor;
