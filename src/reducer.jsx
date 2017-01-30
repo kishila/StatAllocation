@@ -93,200 +93,30 @@ export default function reducer(state = initialState, action) {
       const selectedClass = action.class
       return updateClass(selectedClass);
     }
-    
+
     //- ステ振り時のアクション
-    case 'ALLOCATION_VIGOR_UP': {
-      const selectedClassParam = state.selectedClassValue.vigor;
-      const nextParam = state.allocationValue.vigor + 1;
+    case 'ALLOCATION_UP': {
+      const paramName = action.param;
+      const selectedClassParam = state.selectedClassValue[paramName];
+      const nextParam = state.allocationValue[paramName] + 1;
       if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"vigor": nextParam});
+      const obj = {};
+      obj[paramName] = nextParam;
+      const nextAllocationObject = Object.assign({}, state.allocationValue, obj);
       const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
       return Object.assign({}, state, {
         allocationValue: nextAllocationObject,
         status: nextStatus
       });
     }
-    case 'ALLOCATION_VIGOR_DOWN': {
-      const selectedClassParam = state.selectedClassValue.vigor;
-      const nextParam = state.allocationValue.vigor - 1;
+    case 'ALLOCATION_DOWN': {
+      const paramName = action.param;
+      const selectedClassParam = state.selectedClassValue[paramName];
+      const nextParam = state.allocationValue[paramName] - 1;
       if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"vigor": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_ATTUNEMENT_UP': {
-      const selectedClassParam = state.selectedClassValue.attunement;
-      const nextParam = state.allocationValue.attunement + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"attunement": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_ATTUNEMENT_DOWN': {
-      const selectedClassParam = state.selectedClassValue.attunement;
-      const nextParam = state.allocationValue.attunement - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"attunement": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_ENDURANCE_UP': {
-      const selectedClassParam = state.selectedClassValue.endurance;
-      const nextParam = state.allocationValue.endurance + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"endurance": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_ENDURANCE_DOWN': {
-      const selectedClassParam = state.selectedClassValue.endurance;
-      const nextParam = state.allocationValue.endurance - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"endurance": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_VITALITY_UP': {
-      const selectedClassParam = state.selectedClassValue.vitality;
-      const nextParam = state.allocationValue.vitality + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"vitality": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_VITALITY_DOWN': {
-      const selectedClassParam = state.selectedClassValue.vitality;
-      const nextParam = state.allocationValue.vitality - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"vitality": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_STRENGTH_UP': {
-      const selectedClassParam = state.selectedClassValue.strength;
-      const nextParam = state.allocationValue.strength + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"strength": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_STRENGTH_DOWN': {
-      const selectedClassParam = state.selectedClassValue.strength;
-      const nextParam = state.allocationValue.strength - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"strength": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_DEXTERITY_UP': {
-      const selectedClassParam = state.selectedClassValue.dexterity;
-      const nextParam = state.allocationValue.dexterity + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"dexterity": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_DEXTERITY_DOWN': {
-      const selectedClassParam = state.selectedClassValue.dexterity;
-      const nextParam = state.allocationValue.dexterity - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"dexterity": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_INTELLIGENCE_UP': {
-      const selectedClassParam = state.selectedClassValue.intelligence;
-      const nextParam = state.allocationValue.intelligence + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"intelligence": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_INTELLIGENCE_DOWN': {
-      const selectedClassParam = state.selectedClassValue.intelligence;
-      const nextParam = state.allocationValue.intelligence - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"intelligence": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_FAITH_UP': {
-      const selectedClassParam = state.selectedClassValue.faith;
-      const nextParam = state.allocationValue.faith + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"faith": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_FAITH_DOWN': {
-      const selectedClassParam = state.selectedClassValue.faith;
-      const nextParam = state.allocationValue.faith - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"faith": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_LUCK_UP': {
-      const selectedClassParam = state.selectedClassValue.luck;
-      const nextParam = state.allocationValue.luck + 1;
-      if((selectedClassParam + nextParam)  > 99) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"luck": nextParam});
-      const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
-      return Object.assign({}, state, {
-        allocationValue: nextAllocationObject,
-        status: nextStatus
-      });
-    }
-    case 'ALLOCATION_LUCK_DOWN': {
-      const selectedClassParam = state.selectedClassValue.luck;
-      const nextParam = state.allocationValue.luck - 1;
-      if(nextParam  < 0) return state;
-      const nextAllocationObject = Object.assign({}, state.allocationValue, {"luck": nextParam});
+      const obj = {};
+      obj[paramName] = nextParam;
+      const nextAllocationObject = Object.assign({}, state.allocationValue, obj);
       const nextStatus = updateStatus(state.selectedClassValue, nextAllocationObject);
       return Object.assign({}, state, {
         allocationValue: nextAllocationObject,
@@ -294,6 +124,7 @@ export default function reducer(state = initialState, action) {
       });
     }
     case 'RESET_ALLOCATION': {
+      console.log("as");
       const nextAllocationObject = {
         "level": 0,
         "vigor": 0,
