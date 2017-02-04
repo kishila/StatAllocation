@@ -37,7 +37,9 @@ const initialState = {
     "intelligence":jsonData.knight.intelligence,
     "faith":jsonData.knight.faith,
     "luck":jsonData.knight.luck
-  }
+  },
+
+  selectedWeapon: ["1", "gf"]
 }
 
 export default function reducer(state = initialState, action) {
