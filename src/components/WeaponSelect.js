@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WeaponSelect({ selectedWeapon, onSelectedWeapon }) {
+export default function WeaponSelect({ selectedWeapon, onSelectedWeapon, onClickDecideWeapon }) {
   return (
     <div>
       <a className="" data-toggle="modal" data-target="#modal-example">
@@ -68,7 +68,7 @@ export default function WeaponSelect({ selectedWeapon, onSelectedWeapon }) {
               </div>
               {/* <!-- 6.モーダルのフッタ --> */}
               <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">OK</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={onSelectedWeapon}>OK</button>
               </div>
           </div>
         </div>

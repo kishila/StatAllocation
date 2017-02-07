@@ -10,8 +10,14 @@ export default function Equipment() {
         onSelectedWeapon={(e) =>
           {
             store.dispatch({
-              type: "SELECT_WEAPON",
-              hand: "RIGHT",
+            })
+          }
+        }
+        onClickDecideWeapon={(e) =>
+          {
+            store.dispatch({
+              type: "DECIDE_WEAPON",
+              hand: "right",
               number: "1"
             })
           }
