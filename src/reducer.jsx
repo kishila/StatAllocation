@@ -37,7 +37,9 @@ const initialState = {
     "intelligence":jsonData.knight.intelligence,
     "faith":jsonData.knight.faith,
     "luck":jsonData.knight.luck
-  }
+  },
+
+  selectedWeapon: ["1", "gf"]
 }
 
 export default function reducer(state = initialState, action) {
@@ -122,7 +124,6 @@ export default function reducer(state = initialState, action) {
       });
     }
     case 'RESET_ALLOCATION': {
-      console.log("as");
       const nextAllocationObject = {
         "level": 0,
         "vigor": 0,
@@ -141,6 +142,15 @@ export default function reducer(state = initialState, action) {
         status: nextStatus
       });
     }
+
+    case 'SELECT_WEAPON': {
+      return state;
+    }
+    case 'DECIDE_WEAPON': {
+      return state;
+    }
+
+
 
     default:
       return state
