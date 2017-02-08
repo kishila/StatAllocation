@@ -6,10 +6,13 @@ export default function Equipment() {
   return (
     <div>
       <WeaponSelect
-        selectedWeapon={store.getState().selectedClass}
-        onSelectedWeapon={(e) =>
+        selectedWeaponGenre={store.getState().selectedWeaponGenre}
+        onSelectWeaponGenre={(e) =>
           {
+            const selectedWeaponGenre = e.target.value;
             store.dispatch({
+              type: "SELECT_WEAPON_GENRE",
+              weapon: selectedWeaponGenre
             })
           }
         }

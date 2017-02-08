@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function WeaponSelect({ selectedWeapon, onSelectedWeapon, onClickDecideWeapon }) {
+const weaponData = require('../../json/wepons.json');
+
+export default function WeaponSelect({ selectedWeaponGenre, onSelectWeaponGenre, onClickDecideWeapon }) {
   return (
     <div>
       <a className="" data-toggle="modal" data-target="#modal-example">
@@ -22,7 +24,7 @@ export default function WeaponSelect({ selectedWeapon, onSelectedWeapon, onClick
               </div>
               {/* <!-- 5.モーダルのボディ --> */}
               <div className="modal-body">
-                <select size="15" style={{width: 80}}>
+                <select size="15" style={{width: 80}} onChange={onSelectWeaponGenre}>
                   <option value="daggers">短剣</option>
                   <option value="straight_swords">直剣</option>
                   <option value="greatswords">大剣</option>
@@ -44,7 +46,7 @@ export default function WeaponSelect({ selectedWeapon, onSelectedWeapon, onClick
                   <option value="claws">爪</option>
                 </select>
 
-                <select size="15" style={{width: 160}}>
+                <select id="weapon-select" size="15" style={{width: 160}}>
                   <option value="daggers">短剣</option>
                   <option value="straight_swords">直剣</option>
                   <option value="greatswords">大剣</option>
@@ -68,7 +70,7 @@ export default function WeaponSelect({ selectedWeapon, onSelectedWeapon, onClick
               </div>
               {/* <!-- 6.モーダルのフッタ --> */}
               <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={onSelectedWeapon}>OK</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={onClickDecideWeapon}>OK</button>
               </div>
           </div>
         </div>
