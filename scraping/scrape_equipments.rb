@@ -48,9 +48,10 @@ equipments = {}
 
 EQUIPMENT.each_pair do |category, weapons|
   next if category == :armor # 防具は現在未対応
-  equipments[category] = weapons.map do |name_en, name_ja|
+  equipment = {}
+  equipments[category] = weapons.map.with_object(equipment) do |(name_en, name_ja), equipment|
     puts name_ja
-    convert_equipments("./html/#{name_en}.html")
+    equipment[name_en] = convert_equipments("./html/#{name_en}.html")
   end
 end
 
