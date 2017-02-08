@@ -17,11 +17,12 @@ export default function StatusViewer({
   onClickAllocationDown, onClickAllocationUp,
   onClickReset
 }) {
-  const AllocationParam = React.createClass({
-    propTypes: {
-      enName: React.PropTypes.string.isRequired,
-      jpName: React.PropTypes.string.isRequired
-    },
+  // ステ降りのコンポーネント
+  class AllocationParam extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
     render() {
       return (
         <tr>
@@ -35,7 +36,8 @@ export default function StatusViewer({
         </tr>
       );
     }
-  });
+  }
+  // ステ振りのコンポーネントをパラメータの数だけ生成
   const allocationParames = paramNames.map((param, i) => {
     return <AllocationParam enName={param.enName} jpName={param.jpName} key={i} />
   });
