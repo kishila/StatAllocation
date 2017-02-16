@@ -75,22 +75,20 @@ const selectShields = shieldsNames.map((shieldsName, i) => {
 });
 
 
-export default function WeaponSelect({ selectedWeaponCategory, onSelectWeaponCategory, selectedWeapononNum, onSelectWeaponNum, onClickDecideWeapon }) {
+export default function WeaponSelect({ componentNum, currentWeaponName, selectedWeaponCategory, onSelectWeaponCategory, selectedWeapononNum, onSelectWeaponNum, onClickDecideWeapon }) {
   const selectedCategoryData = weapons[selectedWeaponCategory];
-  console.log(selectedCategoryData);
-
   const optionWeapon = selectedCategoryData.map((weponData, i) => {
     return <OptionComponent value={i} body={weponData.name} key={i} />
   });
 
   return (
     <div>
-      <a className="btn" data-toggle="modal" data-target="#modal-example">
-        -------
+      <a className="btn" data-toggle="modal" data-target={"#modal" + componentNum}>
+        {currentWeaponName}
       </a>
 
       {/* <!-- 2.モーダルの配置 --> */}
-      <div className="modal" id="modal-example">
+      <div className="modal" id={"modal" + componentNum}>
         <div className="modal-dialog">
 
           {/* <!-- 3.モーダルのコンテンツ --> */}
@@ -110,7 +108,7 @@ export default function WeaponSelect({ selectedWeaponCategory, onSelectWeaponCat
                   {selectSpellTools}
                   {selectShields}
                 </select>
-                <select size="15" style={{width: 300}} onChange={onSelectWeaponNum}>
+                <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
                   {optionWeapon}
                 </select>
               </div>

@@ -26,7 +26,7 @@ const selectClass = classNames.map((className, i) => {
   return <OptionComponent enName={className.enName} jpName={className.jpName} key={i} />
 });
 
-export default function ClassesSelect({ selectedClass, onChangeClass }) {
+export default function ClassesSelect({ selectedClass, onChangeClass}) {
 
   return (
     <select onChange={onChangeClass}>

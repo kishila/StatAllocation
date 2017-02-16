@@ -1,18 +1,21 @@
-const jsonData = require('../json/classes.json');
+const classData = require('../json/classes.json');
+
+const weaponData = require('../json/weapons.json');
+const weapons = Object.assign({}, weaponData["proximity"], weaponData["shooting"], weaponData["spell_tools"], weaponData["shields"]);
 
 const initialState = {
   selectedClass: "knight",
   selectedClassValue: {
-    "level":jsonData.knight.level,
-    "vigor":jsonData.knight.vigor,
-    "attunement":jsonData.knight.attunement,
-    "endurance":jsonData.knight.endurance,
-    "vitality":jsonData.knight.vitality,
-    "strength":jsonData.knight.strength,
-    "dexterity":jsonData.knight.dexterity,
-    "intelligence":jsonData.knight.intelligence,
-    "faith":jsonData.knight.faith,
-    "luck":jsonData.knight.luck
+    "level":classData.knight.level,
+    "vigor":classData.knight.vigor,
+    "attunement":classData.knight.attunement,
+    "endurance":classData.knight.endurance,
+    "vitality":classData.knight.vitality,
+    "strength":classData.knight.strength,
+    "dexterity":classData.knight.dexterity,
+    "intelligence":classData.knight.intelligence,
+    "faith":classData.knight.faith,
+    "luck":classData.knight.luck
   },
   allocationValue: {
     "level": 0,
@@ -27,18 +30,24 @@ const initialState = {
     "luck": 0
   },
   status: {
-    "level":jsonData.knight.level,
-    "vigor":jsonData.knight.vigor,
-    "attunement":jsonData.knight.attunement,
-    "endurance":jsonData.knight.endurance,
-    "vitality":jsonData.knight.vitality,
-    "strength":jsonData.knight.strength,
-    "dexterity":jsonData.knight.dexterity,
-    "intelligence":jsonData.knight.intelligence,
-    "faith":jsonData.knight.faith,
-    "luck":jsonData.knight.luck
+    "level":classData.knight.level,
+    "vigor":classData.knight.vigor,
+    "attunement":classData.knight.attunement,
+    "endurance":classData.knight.endurance,
+    "vitality":classData.knight.vitality,
+    "strength":classData.knight.strength,
+    "dexterity":classData.knight.dexterity,
+    "intelligence":classData.knight.intelligence,
+    "faith":classData.knight.faith,
+    "luck":classData.knight.luck
   },
 
+  rightHandWeapon1: "------",
+  rightHandWeapon2: "------",
+  rightHandWeapon3: "------",
+  leftHandWeapon1: "------",
+  leftHandWeapon2: "------",
+  leftHandWeapon3: "------",
   selectedWeaponCategory: "daggers",
   selectedWeaponNum: "0"
 }
@@ -46,7 +55,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   // 選択された素性のオブジェクトデータを取得
   const getSelectedClassObjectData = (selectedClass) => {
-    const selClassData = jsonData[selectedClass];
+    const selClassData = classData[selectedClass];
     return {
       "level":selClassData.level,
       "vigor":selClassData.vigor,
@@ -157,7 +166,46 @@ export default function reducer(state = initialState, action) {
     }
 
     case 'DECIDE_WEAPON': {
-      return state;
+      const decidedWeaponCategoryData = weapons[state.selectedWeaponCategory];
+      const decidedWeaponName = decidedWeaponCategoryData[state.selectedWeaponNum].name;
+      if(action.hand == "right") {
+        switch(action.number) {
+          case '1': {
+            return Object.assign({}, state, {
+              rightHandWeapon1: decidedWeaponName
+            });
+          }
+          case '2': {
+            return Object.assign({}, state, {
+              rightHandWeapon2: decidedWeaponName
+            });
+          }
+          case '3': {
+            return Object.assign({}, state, {
+              rightHandWeapon3: decidedWeaponName
+            });
+          }
+        }
+      } else {
+        switch(action.number) {
+          case '1': {
+            return Object.assign({}, state, {
+              leftHandWeapon1: decidedWeaponName
+            });
+          }
+          case '2': {
+            return Object.assign({}, state, {
+              leftHandWeapon2: decidedWeaponName
+            });
+          }
+          case '3': {
+            return Object.assign({}, state, {
+              leftHandWeapon3: decidedWeaponName
+            });
+          }
+        }
+      }
+
     }
 
 
