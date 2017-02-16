@@ -7,6 +7,7 @@ const proximity = weaponData["proximity"];
 const shooting = weaponData["shooting"];
 const spellTools = weaponData["spell_tools"];
 const shields = weaponData["shields"];
+const weapons = Object.assign({}, proximity, shooting, spellTools, shields);
 
 const proximityNames = [
   {enName: "daggers", jpName: "短剣"},
@@ -47,33 +48,41 @@ const shieldsNames = [
   {enName: "greatshields", jpName: "大盾"}
 ]
 
-for(var key in weaponData){
+for(var key in proximity){
+
 }
 
 // セレクタの<option>部分のコンポーネント
 class OptionComponent extends React.Component {
   render() {
     return (
-      <option value={this.props.enName}>{this.props.jpName}</option>
+      <option value={this.props.value}>{this.props.body}</option>
     );
   }
 }
 // 武器のカテゴリーの数だけ<option>の生成
 const selectProximity = proximityNames.map((proximityName, i) => {
-  return <OptionComponent enName={proximityName.enName} jpName={proximityName.jpName} key={i} />
+  return <OptionComponent value={proximityName.enName} body={proximityName.jpName} key={i} />
 });
 const selectShooting = shootingNames.map((shootingName, i) => {
-  return <OptionComponent enName={shootingName.enName} jpName={shootingName.jpName} key={i} />
+  return <OptionComponent value={shootingName.enName} body={shootingName.jpName} key={i} />
 });
 const selectSpellTools = spellToolsNames.map((spellToolsName, i) => {
-  return <OptionComponent enName={spellToolsName.enName} jpName={spellToolsName.jpName} key={i} />
+  return <OptionComponent value={spellToolsName.enName} body={spellToolsName.jpName} key={i} />
 });
 const selectShields = shieldsNames.map((shieldsName, i) => {
-  return <OptionComponent enName={shieldsName.enName} jpName={shieldsName.jpName} key={i} />
+  return <OptionComponent value={shieldsName.enName} body={shieldsName.jpName} key={i} />
 });
 
 
-export default function WeaponSelect({ selectedWeaponGenre, onSelectWeaponGenre, onClickDecideWeapon }) {
+export default function WeaponSelect({ selectedWeaponCategory, onSelectWeaponCategory, selectedWeapononNum, onSelectWeaponNum, onClickDecideWeapon }) {
+  const selectedCategoryData = weapons[selectedWeaponCategory];
+  console.log(selectedCategoryData);
+
+  const optionWeapon = selectedCategoryData.map((weponData, i) => {
+    return <OptionComponent value={i} body={weponData.name} key={i} />
+  });
+
   return (
     <div>
       <a className="btn" data-toggle="modal" data-target="#modal-example">
@@ -91,15 +100,18 @@ export default function WeaponSelect({ selectedWeaponGenre, onSelectWeaponGenre,
                   <button type="button" className="close" data-dismiss="modal">
                       <span aria-hidden="true">&times;</span>
                   </button>
-                  <h4 className="modal-title" id="modal-label">ダイアログ</h4>
+                  <h4 className="modal-title" id="modal-label">武器選択</h4>
               </div>
               {/* <!-- 5.モーダルのボディ --> */}
               <div className="modal-body">
-                <select size="15" style={{width: 80}} onChange={onSelectWeaponGenre}>
+                <select size="15" style={{width: 80}} onChange={onSelectWeaponCategory}>
                   {selectProximity}
                   {selectShooting}
                   {selectSpellTools}
                   {selectShields}
+                </select>
+                <select size="15" style={{width: 300}} onChange={onSelectWeaponNum}>
+                  {optionWeapon}
                 </select>
               </div>
               {/* <!-- 6.モーダルのフッタ --> */}
@@ -109,7 +121,6 @@ export default function WeaponSelect({ selectedWeaponGenre, onSelectWeaponGenre,
           </div>
         </div>
       </div>
-
     </div>
   );
 }

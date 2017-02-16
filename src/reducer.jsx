@@ -39,7 +39,8 @@ const initialState = {
     "luck":jsonData.knight.luck
   },
 
-  selectedWeaponGenre: "daggers"
+  selectedWeaponCategory: "daggers",
+  selectedWeaponNum: "0"
 }
 
 export default function reducer(state = initialState, action) {
@@ -143,11 +144,18 @@ export default function reducer(state = initialState, action) {
       });
     }
 
-    case 'SELECT_WEAPON_GENRE': {
+    case 'SELECT_WEAPON_CATEGORY': {
       return Object.assign({}, state, {
-        selectedWeaponGenre: action.weapon
+        selectedWeaponCategory: action.weapon
       });
     }
+
+    case 'SELECT_WEAPON_NUM': {
+      return Object.assign({}, state, {
+        selectedWeaponNum: action.num
+      });
+    }
+
     case 'DECIDE_WEAPON': {
       return state;
     }
