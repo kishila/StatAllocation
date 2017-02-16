@@ -13,21 +13,17 @@ const classNames = [
   {enName: "deprived", jpName: "持たざる者"}
 ]
 
-// 素性のセレクタの<option>部分のコンポーネント
-class ClassSelect extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+// セレクタの<option>部分のコンポーネント
+class OptionComponent extends React.Component {
   render() {
     return (
       <option value={this.props.enName}>{this.props.jpName}</option>
     );
   }
 }
-// 素性の数だけコンポーネントの生成
+// 素性の数だけ<option>の生成
 const selectClass = classNames.map((className, i) => {
-  return <ClassSelect enName={className.enName} jpName={className.jpName} key={i} />
+  return <OptionComponent enName={className.enName} jpName={className.jpName} key={i} />
 });
 
 export default function ClassesSelect({ selectedClass, onChangeClass }) {
