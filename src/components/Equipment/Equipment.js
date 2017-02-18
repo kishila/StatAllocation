@@ -1,6 +1,6 @@
 import React from 'react';
 import WeaponSelect from './WeaponSelect';
-import store from '../store';
+import store from '../../store';
 
 export default function Equipment() {
   return (

@@ -1,8 +1,8 @@
 import expect from 'expect'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Character from './components/Character';
-import Equipment from './components/Equipment';
+import Character from './components/Character/Character';
+import Equipment from './components/Equipment/Equipment';
 import store from './store';
 
 //画面更新用の関数を作成

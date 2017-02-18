@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassesSelect from './ClassesSelect';
 import StatusViewer from './StatusViewer';
-import store from '../store';
+import store from '../../store';
 
 export default function Character() {
   return (

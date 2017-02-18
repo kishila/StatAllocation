@@ -1,6 +1,6 @@
 import React from 'react';
 
-const weaponData = require('../../json/weapons.json');
+const weaponData = require('../../../json/weapons.json');
 console.log(weaponData);
 
 const proximity = weaponData["proximity"];
@@ -48,10 +48,6 @@ const shieldsNames = [
   {enName: "greatshields", jpName: "大盾"}
 ]
 
-for(var key in proximity){
-
-}
-
 // セレクタの<option>部分のコンポーネント
 class OptionComponent extends React.Component {
   render() {
@@ -83,7 +79,7 @@ export default function WeaponSelect({ componentNum, currentWeaponName, selected
 
   return (
     <div>
-      <a className="btn" data-toggle="modal" data-target={"#modal" + componentNum}>
+      <a className="" data-toggle="modal" data-target={"#modal" + componentNum}>
         {currentWeaponName}
       </a>
 
