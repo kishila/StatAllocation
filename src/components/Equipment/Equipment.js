@@ -6,28 +6,9 @@ export default function Equipment() {
   return (
     <div>
       <WeaponSelect
-        componentNum = {1}
+        componentNum = {"right1"}
+        shakeHand = {"右 武器1："}
         currentWeaponName = {store.getState().rightHandWeapon1}
-        selectedWeaponCategory = {store.getState().selectedWeaponCategory}
-        onSelectWeaponCategory = {(e) =>
-          {
-            const selectedWeaponCategory = e.target.value;
-            store.dispatch({
-              type: "SELECT_WEAPON_CATEGORY",
-              weapon: selectedWeaponCategory
-            })
-          }
-        }
-        selectedWeapononNum = {store.getState().selectedWeaponNum}
-        onSelectWeaponNum = {(e) =>
-          {
-            const selectedWeaponNum = e.target.value;
-            store.dispatch({
-              type: "SELECT_WEAPON_NUM",
-              num: selectedWeaponNum
-            })
-          }
-        }
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -39,34 +20,29 @@ export default function Equipment() {
         }
       />
       <WeaponSelect
-        componentNum = {2}
+        componentNum = {"right2"}
+        shakeHand = {"右 武器2："}
         currentWeaponName = {store.getState().rightHandWeapon2}
-        selectedWeaponCategory = {store.getState().selectedWeaponCategory}
-        onSelectWeaponCategory = {(e) =>
-          {
-            const selectedWeaponCategory = e.target.value;
-            store.dispatch({
-              type: "SELECT_WEAPON_CATEGORY",
-              weapon: selectedWeaponCategory
-            })
-          }
-        }
-        selectedWeapononNum = {store.getState().selectedWeaponNum}
-        onSelectWeaponNum = {(e) =>
-          {
-            const selectedWeaponNum = e.target.value;
-            store.dispatch({
-              type: "SELECT_WEAPON_NUM",
-              num: selectedWeaponNum
-            })
-          }
-        }
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
               type: "DECIDE_WEAPON",
               hand: "right",
               number: "2"
+            })
+          }
+        }
+      />
+      <WeaponSelect
+        componentNum = {"right3"}
+        shakeHand = {"右 武器3："}
+        currentWeaponName = {store.getState().rightHandWeapon2}
+        onClickDecideWeapon = {(e) =>
+          {
+            store.dispatch({
+              type: "DECIDE_WEAPON",
+              hand: "right",
+              number: "3"
             })
           }
         }

@@ -43,7 +43,7 @@ export default function StatusViewer({
   });
 
   return (
-    <table>
+    <table className="bg-table">
       <tbody>
         <tr>
           <td>レベル</td>

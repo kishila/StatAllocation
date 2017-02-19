@@ -29,8 +29,17 @@ const selectClass = classNames.map((className, i) => {
 export default function ClassesSelect({ selectedClass, onChangeClass}) {
 
   return (
-    <select onChange={onChangeClass}>
-      {selectClass}
-    </select>
+    <table>
+      <tbody>
+        <tr>
+          <td width="100">素性</td>
+          <td>
+            <select onChange={onChangeClass}>
+              {selectClass}
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

@@ -43,8 +43,14 @@ const initialState = {
   },
 
   rightHandWeapon1: "------",
+  rightWeaponCategory1: "",
+  rightWeaponNum1: "",
   rightHandWeapon2: "------",
+  rightWeaponCategory2: "",
+  rightWeaponNum2: "",
   rightHandWeapon3: "------",
+  rightWeaponCategory3: "",
+  rightWeaponNum3: "",
   leftHandWeapon1: "------",
   leftHandWeapon2: "------",
   leftHandWeapon3: "------",
@@ -172,17 +178,23 @@ export default function reducer(state = initialState, action) {
         switch(action.number) {
           case '1': {
             return Object.assign({}, state, {
-              rightHandWeapon1: decidedWeaponName
+              rightHandWeapon1: decidedWeaponName,
+              rightWeaponCategory1: state.selectedWeaponCategory,
+              rightWeaponNum1: state.selectedWeaponNum,
             });
           }
           case '2': {
             return Object.assign({}, state, {
-              rightHandWeapon2: decidedWeaponName
+              rightHandWeapon2: decidedWeaponName,
+              rightWeaponCategory2: state.selectedWeaponCategory,
+              rightWeaponNum2: state.selectedWeaponNum,
             });
           }
           case '3': {
             return Object.assign({}, state, {
-              rightHandWeapon3: decidedWeaponName
+              rightHandWeapon3: decidedWeaponName,
+              rightWeaponCategory3: state.selectedWeaponCategory,
+              rightWeaponNum3: state.selectedWeaponNum,
             });
           }
         }
@@ -190,26 +202,29 @@ export default function reducer(state = initialState, action) {
         switch(action.number) {
           case '1': {
             return Object.assign({}, state, {
-              leftHandWeapon1: decidedWeaponName
+              leftHandWeapon1: decidedWeaponName,
+              leftWeaponCategory1: state.selectedWeaponCategory,
+              leftWeaponNum1: state.selectedWeaponNum,
             });
           }
           case '2': {
             return Object.assign({}, state, {
-              leftHandWeapon2: decidedWeaponName
+              leftHandWeapon2: decidedWeaponName,
+              leftWeaponCategory2: state.selectedWeaponCategory,
+              leftWeaponNum2: state.selectedWeaponNum,
             });
           }
           case '3': {
             return Object.assign({}, state, {
-              leftHandWeapon3: decidedWeaponName
+              leftHandWeapon3: decidedWeaponName,
+              leftWeaponCategory3: state.selectedWeaponCategory,
+              leftWeaponNum3: state.selectedWeaponNum,
             });
           }
         }
       }
 
     }
-
-
-
     default:
       return state
   }

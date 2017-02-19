@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../../store';
 
 const weaponData = require('../../../json/weapons.json');
 console.log(weaponData);
@@ -70,8 +71,29 @@ const selectShields = shieldsNames.map((shieldsName, i) => {
   return <OptionComponent value={shieldsName.enName} body={shieldsName.jpName} key={i} />
 });
 
+const onSelectWeaponCategory = (e) =>
+{
+  const selectedWeaponCategory = e.target.value;
+  store.dispatch({
+    type: "SELECT_WEAPON_CATEGORY",
+    weapon: selectedWeaponCategory
+  })
+}
+const onSelectWeaponNum = (e) =>
+{
+  const selectedWeaponNum = e.target.value;
+  store.dispatch({
+    type: "SELECT_WEAPON_NUM",
+    num: selectedWeaponNum
+  })
+}
 
-export default function WeaponSelect({ componentNum, currentWeaponName, selectedWeaponCategory, onSelectWeaponCategory, selectedWeapononNum, onSelectWeaponNum, onClickDecideWeapon }) {
+
+
+export default function WeaponSelect({ componentNum, shakeHand, currentWeaponName, onClickDecideWeapon }) {
+  const selectedWeaponCategory = store.getState().selectedWeaponCategory;
+  const selectedWeapononNum = store.getState().selectedWeaponNum;
+
   const selectedCategoryData = weapons[selectedWeaponCategory];
   const optionWeapon = selectedCategoryData.map((weponData, i) => {
     return <OptionComponent value={i} body={weponData.name} key={i} />
@@ -79,6 +101,7 @@ export default function WeaponSelect({ componentNum, currentWeaponName, selected
 
   return (
     <div>
+      {shakeHand}
       <a className="" data-toggle="modal" data-target={"#modal" + componentNum}>
         {currentWeaponName}
       </a>
@@ -94,7 +117,7 @@ export default function WeaponSelect({ componentNum, currentWeaponName, selected
                   <button type="button" className="close" data-dismiss="modal">
                       <span aria-hidden="true">&times;</span>
                   </button>
-                  <h4 className="modal-title" id="modal-label">武器選択</h4>
+                  <h4 className="modal-title" id="modal-label">{shakeHand}{currentWeaponName}</h4>
               </div>
               {/* <!-- 5.モーダルのボディ --> */}
               <div className="modal-body">
