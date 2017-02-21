@@ -1,8 +1,8 @@
 import React from 'react';
-import store from '../../store';
+import store from '../../../store';
+import WeaponStatus from './WeaponStatus';
 
-const weaponData = require('../../../json/weapons.json');
-console.log(weaponData);
+const weaponData = require('../../../../json/weapons.json');
 
 const proximity = weaponData["proximity"];
 const shooting = weaponData["shooting"];
@@ -71,6 +71,8 @@ const selectShields = shieldsNames.map((shieldsName, i) => {
   return <OptionComponent value={shieldsName.enName} body={shieldsName.jpName} key={i} />
 });
 
+
+
 const onSelectWeaponCategory = (e) =>
 {
   const selectedWeaponCategory = e.target.value;
@@ -90,54 +92,38 @@ const onSelectWeaponNum = (e) =>
 
 
 
-export default function WeaponSelect({ componentNum, shakeHand, currentWeaponName, onClickDecideWeapon }) {
+export default function WeaponSelect() {
   const selectedWeaponCategory = store.getState().selectedWeaponCategory;
-  const selectedWeapononNum = store.getState().selectedWeaponNum;
-
+  const selectedWeaponNum = store.getState().selectedWeaponNum;
   const selectedCategoryData = weapons[selectedWeaponCategory];
+  const selectedWeaponObject = selectedCategoryData[selectedWeaponNum];
+
   const optionWeapon = selectedCategoryData.map((weponData, i) => {
     return <OptionComponent value={i} body={weponData.name} key={i} />
   });
 
   return (
-    <div>
-      {shakeHand}
-      <a className="" data-toggle="modal" data-target={"#modal" + componentNum}>
-        {currentWeaponName}
-      </a>
-
-      {/* <!-- 2.モーダルの配置 --> */}
-      <div className="modal" id={"modal" + componentNum}>
-        <div className="modal-dialog">
-
-          {/* <!-- 3.モーダルのコンテンツ --> */}
-          <div className="modal-content">
-              {/* <!-- 4.モーダルのヘッダ --> */}
-              <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 className="modal-title" id="modal-label">{shakeHand}{currentWeaponName}</h4>
-              </div>
-              {/* <!-- 5.モーダルのボディ --> */}
-              <div className="modal-body">
-                <select size="15" style={{width: 80}} onChange={onSelectWeaponCategory}>
-                  {selectProximity}
-                  {selectShooting}
-                  {selectSpellTools}
-                  {selectShields}
-                </select>
-                <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
-                  {optionWeapon}
-                </select>
-              </div>
-              {/* <!-- 6.モーダルのフッタ --> */}
-              <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={onClickDecideWeapon}>OK</button>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <select size="15" style={{width: 80}} onChange={onSelectWeaponCategory}>
+              {selectProximity}
+              {selectShooting}
+              {selectSpellTools}
+              {selectShields}
+            </select>
+          </td>
+          <td>
+            <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
+              {optionWeapon}
+            </select>
+          </td>
+          <td>
+            <WeaponStatus weapon = {selectedWeaponObject} />
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

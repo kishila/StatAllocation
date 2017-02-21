@@ -61,7 +61,7 @@ export default function StatusViewer({
           </td>
         </tr>
         <tr>
-          <td colSpan="2">
+          <td>
             <span onClick={onClickReset}>リセット</span>
           </td>
         </tr>
