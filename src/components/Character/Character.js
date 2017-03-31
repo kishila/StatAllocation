@@ -18,9 +18,9 @@ export default function Character() {
         }
       />
       <StatusViewer
-        status={store.getState().status}
-        selectedClassValue={store.getState().selectedClassValue}
-        allocationValue={store.getState().allocationValue}
+        status={store.getState().character.status}
+        selectedClassValue={store.getState().character.selectedClassValue}
+        allocationValue={store.getState().character.allocationValue}
         onClickAllocationDown={(e) => {store.dispatch({type: "ALLOCATION_DOWN", param: e.target.id})}}
         onClickAllocationUp={(e) => {store.dispatch({type: "ALLOCATION_UP", param: e.target.id})}}
         onClickReset={(e) => {store.dispatch({type: "RESET_ALLOCATION"})}}
