@@ -80,10 +80,11 @@ export default function reducer(state = initialState, action) {
 
   // 素性の変更
   const updateClass = (selectedClassName) => {
+    const nextSelectedClassName = selectedClassName;
     const nextSelectedClassObject = getSelectedClassObjectData(selectedClassName);
     const nextStatus = updateStatus(nextSelectedClassObject, state.allocationValue);
     return Object.assign({}, state, {
-      selectedClass: nextSelectedClassObject,
+      selectedClass: nextSelectedClassName,
       selectedClassValue: nextSelectedClassObject,
       status: nextStatus
     })

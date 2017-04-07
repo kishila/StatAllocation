@@ -26,7 +26,8 @@ export default function reducer(state = initialState, action) {
   switch(action.type) {
     case 'SELECT_WEAPON_CATEGORY': {
       return Object.assign({}, state, {
-        selectedWeaponCategory: action.weapon
+        selectedWeaponCategory: action.weapon,
+        selectedWeaponNum: "0"
       });
     }
 

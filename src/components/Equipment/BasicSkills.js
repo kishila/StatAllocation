@@ -2,9 +2,9 @@ import React from 'react';
 import store from '../../store';
 
 export default function BasicSkills() {
-  const hp = store.getState().hp;
-  const fp = store.getState().fp;
-  const stamina = store.getState().stamina;
+  const hp = store.getState().equipment.hp;
+  const fp = store.getState().equipment.fp;
+  const stamina = store.getState().equipment.stamina;
 
   return (
     <div>

@@ -1,8 +1,6 @@
 import React from 'react';
 import store from '../../../store';
 
-const weaponData = require('../../../../json/weapons.json');
-
 export default function WeaponStatus({ weapon }) {
   return (
     <table>
