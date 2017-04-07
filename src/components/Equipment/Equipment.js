@@ -10,7 +10,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"right1"}
         shakeHand = {"右 武器1："}
-        currentWeaponName = {store.getState().rightHandWeapon1}
+        currentWeaponName = {store.getState().equipment.rightHandWeapon1}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -24,7 +24,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"right2"}
         shakeHand = {"右 武器2："}
-        currentWeaponName = {store.getState().rightHandWeapon2}
+        currentWeaponName = {store.getState().equipment.rightHandWeapon2}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -38,7 +38,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"right3"}
         shakeHand = {"右 武器3："}
-        currentWeaponName = {store.getState().rightHandWeapon3}
+        currentWeaponName = {store.getState().equipment.rightHandWeapon3}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -52,7 +52,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"left1"}
         shakeHand = {"左 武器1："}
-        currentWeaponName = {store.getState().leftHandWeapon1}
+        currentWeaponName = {store.getState().equipment.leftHandWeapon1}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -66,7 +66,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"left2"}
         shakeHand = {"左 武器2："}
-        currentWeaponName = {store.getState().leftHandWeapon2}
+        currentWeaponName = {store.getState().equipment.leftHandWeapon2}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({
@@ -80,7 +80,7 @@ export default function Equipment() {
       <WeaponSelect
         componentNum = {"left3"}
         shakeHand = {"左 武器3："}
-        currentWeaponName = {store.getState().leftHandWeapon3}
+        currentWeaponName = {store.getState().equipment.leftHandWeapon3}
         onClickDecideWeapon = {(e) =>
           {
             store.dispatch({

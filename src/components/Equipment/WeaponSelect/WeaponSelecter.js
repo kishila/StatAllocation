@@ -93,8 +93,8 @@ const onSelectWeaponNum = (e) =>
 
 
 export default function WeaponSelect() {
-  const selectedWeaponCategory = store.getState().selectedWeaponCategory;
-  const selectedWeaponNum = store.getState().selectedWeaponNum;
+  const selectedWeaponCategory = store.getState().equipment.selectedWeaponCategory;
+  const selectedWeaponNum = store.getState().equipment.selectedWeaponNum;
   const selectedCategoryData = weapons[selectedWeaponCategory];
   const selectedWeaponObject = selectedCategoryData[selectedWeaponNum];
 

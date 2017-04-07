@@ -1,5 +1,4 @@
 import React from 'react';
-import store from '../../../store';
 import WeaponSelecter from './WeaponSelecter';
 
 export default function WeaponSelect({ componentNum, shakeHand, currentWeaponName, onClickDecideWeapon }) {
