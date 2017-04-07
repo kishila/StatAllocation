@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ClassesSelect from './ClassesSelect';
 import StatusViewer from './StatusViewer';
-import store from '../../store';
 
 class Character extends Component {
   constructor(props) {

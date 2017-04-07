@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Character from '../components/Character/Character';
-import Equipment from '../components/Equipment/Equipment';
+import Character from './Character/Character';
+import Equipment from './Equipment/Equipment';
 
 class RootComponent extends Component {
   render() {

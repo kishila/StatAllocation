@@ -27,7 +27,6 @@ const selectClass = classNames.map((className, i) => {
 });
 
 export default function ClassesSelect({ selectedClass, onChangeClass}) {
-
   return (
     <table>
       <tbody>

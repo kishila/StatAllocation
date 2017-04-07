@@ -1,5 +1,5 @@
-import React from 'react';
-import store from '../../../store';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import WeaponStatus from './WeaponStatus';
 
 const weaponData = require('../../../../json/weapons.json');
@@ -71,59 +71,67 @@ const selectShields = shieldsNames.map((shieldsName, i) => {
   return <OptionComponent value={shieldsName.enName} body={shieldsName.jpName} key={i} />
 });
 
+class WeaponSelect extends Component {
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+    const selectedWeaponCategory = this.props.selectedWeaponCategory;
+    const selectedWeaponNum = this.props.selectedWeaponNum;
+    const selectedCategoryData = weapons[selectedWeaponCategory];
+    const selectedWeaponObject = selectedCategoryData[selectedWeaponNum];
 
-const onSelectWeaponCategory = (e) =>
-{
-  const selectedWeaponCategory = e.target.value;
-  store.dispatch({
-    type: "SELECT_WEAPON_CATEGORY",
-    weapon: selectedWeaponCategory
+    const optionWeapon = selectedCategoryData.map((weponData, i) => {
+      return <OptionComponent value={i} body={weponData.name} key={i} />
+    });
+    const onSelectWeaponCategory = (e) =>
+    {
+      const nextSelectedWeaponCategory = e.target.value;
+      this.props.dispatch({
+        type: "SELECT_WEAPON_CATEGORY",
+        weapon: nextSelectedWeaponCategory
+      })
+    }
+    const onSelectWeaponNum = (e) =>
+    {
+      const nextSelectedWeaponNum = e.target.value;
+      this.props.dispatch({
+        type: "SELECT_WEAPON_NUM",
+        num: nextSelectedWeaponNum
+      })
+    }
+
+    return (
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <select size="15" style={{width: 80}} onChange={onSelectWeaponCategory}>
+                {selectProximity}
+                {selectShooting}
+                {selectSpellTools}
+                {selectShields}
+              </select>
+            </td>
+            <td>
+              <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
+                {optionWeapon}
+              </select>
+            </td>
+            <td>
+              <WeaponStatus weapon = {selectedWeaponObject} />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+}
+
+export default connect(
+  state => ({
+    selectedWeaponCategory: state.equipment.selectedWeaponCategory,
+    selectedWeaponNum: state.equipment.selectedWeaponNum,
   })
-}
-const onSelectWeaponNum = (e) =>
-{
-  const selectedWeaponNum = e.target.value;
-  store.dispatch({
-    type: "SELECT_WEAPON_NUM",
-    num: selectedWeaponNum
-  })
-}
-
-
-
-export default function WeaponSelect() {
-  const selectedWeaponCategory = store.getState().equipment.selectedWeaponCategory;
-  const selectedWeaponNum = store.getState().equipment.selectedWeaponNum;
-  const selectedCategoryData = weapons[selectedWeaponCategory];
-  const selectedWeaponObject = selectedCategoryData[selectedWeaponNum];
-
-  const optionWeapon = selectedCategoryData.map((weponData, i) => {
-    return <OptionComponent value={i} body={weponData.name} key={i} />
-  });
-
-  return (
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <select size="15" style={{width: 80}} onChange={onSelectWeaponCategory}>
-              {selectProximity}
-              {selectShooting}
-              {selectSpellTools}
-              {selectShields}
-            </select>
-          </td>
-          <td>
-            <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
-              {optionWeapon}
-            </select>
-          </td>
-          <td>
-            <WeaponStatus weapon = {selectedWeaponObject} />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  );
-}
+)(WeaponSelect);
