@@ -1,19 +1,17 @@
 import expect from 'expect'
 import React from 'react'
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom'
-import Character from './components/Character/Character';
-import Equipment from './components/Equipment/Equipment';
+import RootComponent from './components/RootComponent';
 import store from './store';
 
 //画面更新用の関数を作成
 const render = () => {
   ReactDOM.render(
-    <Character />,
+    <Provider store={store}>
+      <RootComponent />
+    </Provider>,
     document.getElementById('root')
-  );
-  ReactDOM.render(
-    <Equipment />,
-    document.getElementById('app')
   );
 }
 

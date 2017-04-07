@@ -1,5 +1,6 @@
 import React from 'react';
 import store from '../../store';
+import { connect } from 'react-redux';
 
 export default function BasicSkills() {
   const hp = store.getState().equipment.hp;
