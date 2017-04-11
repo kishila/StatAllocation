@@ -115,7 +115,7 @@ class WeaponSelect extends Component {
               </select>
             </td>
             <td>
-              <select size="15" style={{width: 200}} value="0" onChange={onSelectWeaponNum}>
+              <select size="15" style={{width: 200}} value={selectedWeaponNum} onChange={onSelectWeaponNum}>
                 {optionWeapon}
               </select>
             </td>
