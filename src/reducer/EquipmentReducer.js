@@ -6,18 +6,23 @@ const initialState = {
   fp: 93,
   stamina: 95,
 
-  rightHandWeapon1: "------",
-  rightWeaponCategory1: "",
-  rightWeaponNum1: "",
-  rightHandWeapon2: "------",
-  rightWeaponCategory2: "",
-  rightWeaponNum2: "",
-  rightHandWeapon3: "------",
-  rightWeaponCategory3: "",
-  rightWeaponNum3: "",
-  leftHandWeapon1: "------",
-  leftHandWeapon2: "------",
-  leftHandWeapon3: "------",
+  weightEquipped: 0,
+  equipLoad: 0,
+
+  rightHandWeaponName1: "------",
+  rightWeaponObject1: {},
+  rightHandWeaponName2: "------",
+  rightWeaponObject2: {},
+  rightHandWeaponName3: "------",
+  rightWeaponObject3: {},
+
+  leftHandWeaponName1: "------",
+  leftWeaponObject1: {},
+  leftHandWeaponName2: "------",
+  leftWeaponObject2: {},
+  leftHandWeaponName3: "------",
+  leftWeaponObject3: {},
+
   selectedWeaponCategory: "daggers",
   selectedWeaponNum: "0"
 }
@@ -25,7 +30,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case 'SELECT_WEAPON_CATEGORY': {
-      //console.log(action.weapon);
       return Object.assign({}, state, {
         selectedWeaponCategory: action.weapon,
         selectedWeaponNum: "0"
@@ -41,27 +45,25 @@ export default function reducer(state = initialState, action) {
     case 'DECIDE_WEAPON': {
       const decidedWeaponCategoryData = weapons[state.selectedWeaponCategory];
       const decidedWeaponName = decidedWeaponCategoryData[state.selectedWeaponNum].name;
+      const decidedWeaponObject = decidedWeaponCategoryData[state.selectedWeaponNum];
       if(action.hand == "right") {
         switch(action.number) {
           case '1': {
             return Object.assign({}, state, {
-              rightHandWeapon1: decidedWeaponName,
-              rightWeaponCategory1: state.selectedWeaponCategory,
-              rightWeaponNum1: state.selectedWeaponNum,
+              rightHandWeaponName1: decidedWeaponName,
+              rightWeaponObject1: decidedWeaponObject,
             });
           }
           case '2': {
             return Object.assign({}, state, {
-              rightHandWeapon2: decidedWeaponName,
-              rightWeaponCategory2: state.selectedWeaponCategory,
-              rightWeaponNum2: state.selectedWeaponNum,
+              rightHandWeaponName2: decidedWeaponName,
+              rightWeaponObject2: decidedWeaponObject,
             });
           }
           case '3': {
             return Object.assign({}, state, {
-              rightHandWeapon3: decidedWeaponName,
-              rightWeaponCategory3: state.selectedWeaponCategory,
-              rightWeaponNum3: state.selectedWeaponNum,
+              rightHandWeaponName3: decidedWeaponName,
+              rightWeaponObject3: decidedWeaponObject,
             });
           }
         }
@@ -69,28 +71,24 @@ export default function reducer(state = initialState, action) {
         switch(action.number) {
           case '1': {
             return Object.assign({}, state, {
-              leftHandWeapon1: decidedWeaponName,
-              leftWeaponCategory1: state.selectedWeaponCategory,
-              leftWeaponNum1: state.selectedWeaponNum,
+              leftHandWeaponName1: decidedWeaponName,
+              leftWeaponObject1: decidedWeaponObject,
             });
           }
           case '2': {
             return Object.assign({}, state, {
-              leftHandWeapon2: decidedWeaponName,
-              leftWeaponCategory2: state.selectedWeaponCategory,
-              leftWeaponNum2: state.selectedWeaponNum,
+              leftHandWeaponName2: decidedWeaponName,
+              leftWeaponObject2: decidedWeaponObject,
             });
           }
           case '3': {
             return Object.assign({}, state, {
-              leftHandWeapon3: decidedWeaponName,
-              leftWeaponCategory3: state.selectedWeaponCategory,
-              leftWeaponNum3: state.selectedWeaponNum,
+              leftHandWeaponName3: decidedWeaponName,
+              leftWeaponObject3: decidedWeaponObject,
             });
           }
         }
       }
-
     }
     default:
       return state

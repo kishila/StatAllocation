@@ -15,7 +15,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"right1"}
           shakeHand = {"右 武器1："}
-          currentWeaponName = {this.props.rightHandWeapon1}
+          currentWeaponName = {this.props.rightHandWeaponName1}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -29,7 +29,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"right2"}
           shakeHand = {"右 武器2："}
-          currentWeaponName = {this.props.rightHandWeapon2}
+          currentWeaponName = {this.props.rightHandWeaponName2}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -43,7 +43,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"right3"}
           shakeHand = {"右 武器3："}
-          currentWeaponName = {this.props.rightHandWeapon3}
+          currentWeaponName = {this.props.rightHandWeaponName3}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -57,7 +57,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"left1"}
           shakeHand = {"左 武器1："}
-          currentWeaponName = {this.props.leftHandWeapon1}
+          currentWeaponName = {this.props.leftHandWeaponName1}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -71,7 +71,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"left2"}
           shakeHand = {"左 武器2："}
-          currentWeaponName = {this.props.leftHandWeapon2}
+          currentWeaponName = {this.props.leftHandWeaponName2}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -85,7 +85,7 @@ import BasicSkills from './BasicSkills';
         <WeaponSelect
           componentNum = {"left3"}
           shakeHand = {"左 武器3："}
-          currentWeaponName = {this.props.leftHandWeapon3}
+          currentWeaponName = {this.props.leftHandWeaponName3}
           onClickDecideWeapon = {(e) =>
             {
               this.props.dispatch({
@@ -103,11 +103,11 @@ import BasicSkills from './BasicSkills';
 
 export default connect(
   state => ({
-    rightHandWeapon1: state.equipment.rightHandWeapon1,
-    rightHandWeapon2: state.equipment.rightHandWeapon2,
-    rightHandWeapon3: state.equipment.rightHandWeapon3,
-    leftHandWeapon1: state.equipment.leftHandWeapon1,
-    leftHandWeapon2: state.equipment.leftHandWeapon2,
-    leftHandWeapon3: state.equipment.leftHandWeapon3,
+    rightHandWeaponName1: state.equipment.rightHandWeaponName1,
+    rightHandWeaponName2: state.equipment.rightHandWeaponName2,
+    rightHandWeaponName3: state.equipment.rightHandWeaponName3,
+    leftHandWeaponName1: state.equipment.leftHandWeaponName1,
+    leftHandWeaponName2: state.equipment.leftHandWeaponName2,
+    leftHandWeaponName3: state.equipment.leftHandWeaponName3,
   })
 )(Equipment);
