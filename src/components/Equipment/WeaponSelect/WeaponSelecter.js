@@ -83,7 +83,7 @@ class WeaponSelect extends Component {
     const selectedWeaponObject = selectedCategoryData[selectedWeaponNum];
 
     const optionWeapon = selectedCategoryData.map((weponData, i) => {
-      return <OptionComponent value={i} body={weponData.name} key={i} />
+      return <OptionComponent value={i} body={weponData.name} key={i} selected />
     });
     const onSelectWeaponCategory = (e) =>
     {
@@ -115,7 +115,7 @@ class WeaponSelect extends Component {
               </select>
             </td>
             <td>
-              <select size="15" style={{width: 200}} onChange={onSelectWeaponNum}>
+              <select size="15" style={{width: 200}} value="0" onChange={onSelectWeaponNum}>
                 {optionWeapon}
               </select>
             </td>
