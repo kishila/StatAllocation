@@ -4,7 +4,6 @@ export default function WeaponStatus({ weapon }) {
   return (
     <table className="table-bordered text-center">
       <tbody>
-
         <tr className="bg-primary">
           <td colSpan="6">攻撃力/カット率</td>
         </tr>
@@ -35,24 +34,28 @@ export default function WeaponStatus({ weapon }) {
 
         <tr className="bg-primary">
           <td colSpan="4">能力補正/必要能力</td>
+          <td>重量</td>
         </tr>
         <tr className="bg-primary">
-          <td >筋</td>
-          <td >技</td>
-          <td >理</td>
-          <td >信</td>
+          <td>筋</td>
+          <td>技</td>
+          <td>理</td>
+          <td>信</td>
+          <td>耐久</td>
         </tr>
         <tr>
           <td>{weapon.bonuses[0]}</td>
           <td>{weapon.bonuses[1]}</td>
           <td>{weapon.bonuses[2]}</td>
           <td>{weapon.bonuses[3]}</td>
+          <td>{weapon.weight}</td>
         </tr>
         <tr>
           <td>{weapon.requirements[0]}</td>
           <td>{weapon.requirements[1]}</td>
           <td>{weapon.requirements[2]}</td>
           <td>{weapon.requirements[3]}</td>
+          <td>{weapon.durability}</td>
         </tr>
       </tbody>
     </table>

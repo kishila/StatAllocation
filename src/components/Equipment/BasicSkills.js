@@ -10,6 +10,7 @@ class BasicSkills extends Component {
     const hp = this.props.hp;
     const fp = this.props.fp;
     const stamina = this.props.stamina;
+    const equippingWeight = this.props.equippingWeight
     return (
       <div>
         <table>
@@ -27,6 +28,10 @@ class BasicSkills extends Component {
               <td>{stamina}</td>
             </tr>
             <tr>
+              <td width="100">装備重量</td>
+              <td>{equippingWeight}/00.0</td>
+            </tr>
+            <tr>
               <td colSpan="2"><hr /></td>
             </tr>
           </tbody>
@@ -41,5 +46,6 @@ export default connect(
     hp: state.equipment.hp,
     fp: state.equipment.fp,
     stamina: state.equipment.stamina,
+    equippingWeight: state.equipment.equippingWeight
   })
 )(BasicSkills);

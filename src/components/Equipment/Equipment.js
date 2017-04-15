@@ -3,10 +3,19 @@ import { connect } from 'react-redux';
 import WeaponSelect from './WeaponSelect/WeaponSelect';
 import BasicSkills from './BasicSkills';
 
-  class Equipment extends Component {
-    constructor(props) {
-      super(props);
-    }
+class Equipment extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const nextEquippingWeight = Number(nextProps.rightWeaponObject1.weight) + Number(nextProps.rightWeaponObject2.weight) + Number(nextProps.rightWeaponObject3.weight) +
+                                Number(nextProps.leftWeaponObject1.weight) + Number(nextProps.leftWeaponObject2.weight)  + Number(nextProps.leftWeaponObject3.weight);
+    this.props.dispatch({
+      type: 'UPDATE_EQUIPPING_WEIGHT',
+      num: nextEquippingWeight
+    });
+  }
 
   render() {
     return (
@@ -104,10 +113,16 @@ import BasicSkills from './BasicSkills';
 export default connect(
   state => ({
     rightHandWeaponName1: state.equipment.rightHandWeaponName1,
+    rightWeaponObject1: state.equipment.rightWeaponObject1,
     rightHandWeaponName2: state.equipment.rightHandWeaponName2,
+    rightWeaponObject2: state.equipment.rightWeaponObject2,
     rightHandWeaponName3: state.equipment.rightHandWeaponName3,
+    rightWeaponObject3: state.equipment.rightWeaponObject3,
     leftHandWeaponName1: state.equipment.leftHandWeaponName1,
+    leftWeaponObject1: state.equipment.leftWeaponObject1,
     leftHandWeaponName2: state.equipment.leftHandWeaponName2,
+    leftWeaponObject2: state.equipment.leftWeaponObject2,
     leftHandWeaponName3: state.equipment.leftHandWeaponName3,
+    leftWeaponObject3: state.equipment.leftWeaponObject3,
   })
 )(Equipment);
